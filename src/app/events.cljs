@@ -87,7 +87,7 @@
  [(log-event)]
  (fn [{:keys [donation] :as db} [_]]
    (timbre/info "Donating " (:amount donation))
-   (case :multi
+   (case :open
      ;; will open new tab
      :open (.open js/window test-donation-uri)
      ;; still testing with multiple invoices
