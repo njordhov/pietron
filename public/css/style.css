@@ -1,0 +1,103 @@
+.inspect1 {
+  border: thin solid red;
+}
+
+.logo {
+}
+
+.brand-name {
+  color: bisque;
+}
+
+.bg-dark {
+  background-color: #547FB2 !important;
+}
+
+.is-invalid {
+  background-image: none !important;
+}
+
+.donation-field {
+  width: 12em;
+}
+
+/* Initial Loading */
+
+.loading.progress {
+  height: 56px;
+  opacity: 0.5;
+}
+
+/* Reloading after blockstack authentication */
+
+.reloading .landing {
+  display:  none;
+}
+
+.reload  {
+  display: none;
+}
+
+.reloading .reload {
+  display: block;
+}
+
+/* Status after verified authenticated */
+
+.authenticated .landing {
+  display: none;
+}
+
+/* Donation field avoid collapse on small screen */
+
+.donation-group {
+  width: auto;
+}
+
+.donation-field {
+  width: 8em;
+}
+
+/* LANDING PAGE */
+
+.landing {
+  font-size: larger;
+}
+
+.landing.jumbotron {
+  min-height: 100vh;
+}
+
+.features-icons {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.features-icons .features-icons-item {
+  max-width: 20rem;
+}
+
+.features-icons .features-icons-item .features-icons-icon {
+  height: 7rem;
+}
+
+.features-icons .features-icons-item .features-icons-icon i {
+  font-size: 4.5rem;
+  color: bisque !important;
+  text-shadow: 2px 2px 5px #00000080;
+  transition: font-size 0.2s ease-in-out;
+}
+
+.features-icons .features-icons-item:hover .features-icons-icon i {
+  font-size: 5.5rem;
+}
+
+.landing .fa-info-circle {
+  font-size: larger;
+
+}
+
+.landing .fa-info-circle:hover {
+  transition: font-size 0.2s ease-in-out;
+  text-shadow: 2px 2px 5px #00000080;
+}

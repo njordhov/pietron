@@ -1,0 +1,38 @@
+{
+  "name": "Pietron",
+  "version": "0.0.1",
+  "description": "shadow-cljs and reagent project",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/terjenorderhaug/"
+  },
+  "author": {
+    "name": "Terje Norderhaug",
+    "email": "terje@in-progress.com"
+  },
+  "license": "EPL-2.0",
+  "scripts": {
+    "dev": "shadow-cljs watch app",
+    "release": "shadow-cljs release app",
+    "server": "shadow-cljs server",
+    "repl": "shadow-cljs browser-repl",
+    "clean": "rm -rf target && rm -rf public/js && rm -rf node_modules",
+    "clean-win": "rmdir /s /q public/js & rmdir /s /q target"
+  },
+  "dependencies": {
+    "@material-ui/core": "3.8.1",
+    "@material-ui/icons": "3.0.1",
+    "blockstack": "19.2.1",
+    "color": "^3.1.2",
+    "create-react-class": "~15.6.3",
+    "grpc": "1.21.1",
+    "react": "~16.8.6",
+    "react-dom": "~16.8.6",
+    "react-minimal-pie-chart": "~4.2.0"
+  },
+  "devDependencies": {
+    "@types/triplesec": "^3.0.0",
+    "readable-stream": "^2.3.6",
+    "shadow-cljs": "^2.8.39"
+  }
+}

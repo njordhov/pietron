@@ -1,0 +1,15 @@
+{
+  "short_name": "Pietron",
+  "name": "Pietron",
+  "icons": [
+    {
+      "src": "/media/icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#FFE4C4",
+  "background_color": "#00bc8c"
+}

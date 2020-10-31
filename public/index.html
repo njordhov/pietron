@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="content-language" content="en" />
+    <link rel="icon" href="/media/favicon.png">
+    <title>Pietron</title>
+
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+          crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/flatly/bootstrap.min.css">
+
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+
+    <script type="text/javascript">
+      var queryString = location.search;
+      var authenticated_prefix = "?authResponse=";
+      if (queryString.startsWith(authenticated_prefix)){
+        console.log("Reloading after authentication")
+        document.documentElement.classList.add('reloading');
+      } else {
+        console.log("Query = ", queryString)
+      }
+    </script>
+
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+
+    <!-- App / Loading -->
+
+    <div id="app">
+      <div class="loading progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated"
+             role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
+             style="width: 100%; height: 100%"></div>
+      </div>
+
+      <div class="preview preview-box reload"
+          style="min-height: 80vh; background-color: #ecf0f1;
+                 margin: 0; padding-top: 5em;
+                 filter: blur(10px);">
+        <div style="width:30%; padding-top: 30%;
+                    display: inline-block;
+                    opacity: 0.5;
+                    float: left;
+                    margin-left: 5em;
+                    margin-top: 0em;
+                    border: thin solid gray; border-radius: 50%;
+                    background-color: bisque">
+          &nbsp;
+        </div>
+        <div style="display: inline-block; width: 50%; margin-left: 5em;
+                    border: thin solid #AAA; height: 100%;
+                    opacity: 0.7;
+                    position: relative;">
+          <table style=" margin: auto; margin-top: 20%; margin-bottom: 20%;line-height: 4em;">
+            <tr><th>j s d h f k d s h k</th><th>j s d h f k d s h k</th></tr>
+            <tr><td>j s d h f k d s h k</td><td>j s d h f k d s h k</td></tr>
+            <tr><td>j s d h f k d s h k</td><td>j s d h f k d s h k</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Landing Page -->
+
+    <div class="landing jumbotron pt-2 pt-lg-4 mb-0">
+
+      <div class="row">
+        <div class="col">
+          <div class="text-center"
+              style="font-size: 2em; margin-top: 1em;">
+            <div class="alert alert-light lead">
+              <h3>Donations on Your Terms</h3>
+               <h3>Share the Pie</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  <!-- FEATURES -->
+
+  <section class="features-icons bg-light text-center">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-md-4">
+            <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="fas fa-chart-pie m-auto text-primary"></i>
+              </div>
+              <h3>Build a Pie</h3>
+              <p class="lead mb-0">Maintain a portfolio of causes that each get a slice of the donation pie.</p>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="fas fa-award m-auto text-primary" hidden=true></i>
+                <i class="fas fa-heart m-auto text-primary"></i>
+              </div>
+              <h3>Give Freely</h3>
+              <p class="lead mb-0">Donate when you can, with no subscription required and no automatic withdrawals taken.</p>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
+              <div class="features-icons-icon d-flex">
+                <i class="fas fa-gift m-auto text-primary"></i>
+              </div>
+              <h3>No Fees</h3>
+              <p class="lead mb-0">We charge no fees<br />(but appreciate if you leave&nbsp;a&nbsp;slice&nbsp;for&nbsp;us)</p>
+            </div>
+          </div>
+        </div
+      </div>
+    </div>
+  </section>
+
+          <section class="card-footer m-auto text-center py-4">
+            <div class="form-signin">
+              <a class="btn btn-lg btn-primary"
+                 role="button"
+                 href="/signin">
+                        Sign in with Blockstack
+              </a>
+           </div>
+           <p class="mt-2">Who's Blockstack?
+             <i class="fas fa-info-circle text-info"
+                   data-toggle="collapse" data-target="#blockstack-login-info">
+                </i>
+           </p>
+           <div id="blockstack-login-info" class="collapse hide">
+              <div class="row">
+                <p class="alert alert-info col-md-6 m-auto">
+                  <a href="https://blockstack.org" target="_blank">
+                    Blockstack</a> is a public benefit corporation,
+                  creating a decentralized computing network and app ecosystem
+                  designed to protect digital&nbsp;rights.</p>
+              </div>
+            </div>
+         </section>
+
+
+
+
+
+
+
+      <!-- OLD LANDING -->
+
+      <div hidden=true class="col-6">
+        <div class="card h-100">
+          <div class="card-header h-100">
+            <h5 class="card-title">Get a Piece of the Pie</h5>
+            <h6 class="card-subtitle">Create a link that your supporters can use to add you to their donation pie.</h5>
+          </div>
+          <div class="card-body">
+            <div id="entryform">...</div>
+          </div>
+        </div>
+      </div>
+
+  </div> <!-- jumbotron -->
+ </div>
+    <footer class="py-5 bg-dark my-0">
+
+      <div class="container unless-loading">
+        <p class="m-0 text-center text-white">
+          Made with <i class="far fa-heart" style="color: salmon"></i> <i class="fa blockstack-glyph">&nbsp;</i>
+          in San Francisco.</p>
+        <p class="text-center mt-2">
+          <a class="text-white" href="privacy-policy.html">Privacy Policy</a>
+        </p>
+
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
+              rel="stylesheet">
+    <script src="/js/main.js" type="text/javascript"></script>
+    <script>window.onload= function() { app.core.main(); }</script>
+
+    <!-- Used for landing page - Can be included in compiled js -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  </body>
+</html>
