@@ -35,7 +35,7 @@
         :value @value
         :on-change (on-change-fn value)}])))
 
-(def currency (reagent/atom "BTC"))
+(def currency (reagent/atom "STX"))
 
 (defn view [{:as attributes}]
   [:form.needs-validation attributes
@@ -49,13 +49,13 @@
     [:div.input-group-append
      #_
      [:span.input-group-text
-      "BTC"]
+      "STX"]
      [:button.btn.btn-secondary.dropdown-toggle
       {:type "button" :data-toggle "dropdown"
        :aria-haspopup true :aria-expanded false}
       @currency
       [:div.dropdown-menu
-       (for [{:keys [title] :as item} [{:title "BTC"} {:title "USD"}]]
+       (for [{:keys [title] :as item} [{:title "STX"} {:title "BTC"}]]
          ^{:key title}
          [:button ; .dropdown-item
           {:class (if (= title @currency) "active")
