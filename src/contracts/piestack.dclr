@@ -1,0 +1,131 @@
+;; PIESTACK CONTRACT
+
+(define-type-alias Address Principal)
+
+(define-type-alias Patron Principal)
+
+(define-type-alias Size (Int 1))
+
+(define-type-alias Total (Int 1))
+
+(define-type-alias Slice {address Address
+                          size Size})
+
+(define-read-only (make-slice 
+                   (address Address)
+                   (size Size))
+  {address, size})
+
+(define max-slices u99)
+
+(define-type-alias Pie (List 99 Slice))
+
+(define-type-alias Amount (Int 1))
+
+(define-type-alias Share {address Address
+                          payment Amount})
+
+(define-read-only (get-payment (share Share))
+  (get payment share))
+
+(define-non-fungible-token fundraiser {address Address})
+
+(define-public (fundraise 
+                (address Address))
+  "Return a principal to raise funds for the bitcoin address"
+   (nft-mint? fundraiser {address} tx-sender))
+
+(define-public (reassign 
+                (address Address) 
+                (manager Principal))
+  "Change the manager of the fundraiser while maintaining the receiving bitcoin address"
+  (nft-transfer? fundraiser {address} tx-sender manager))
+
+(define-map portfolio
+  ((patron Patron))
+  ((pie Pie)))
+  
+(define-read-only (get-portfolio)
+  "The portfolio of the sender"
+  (expect (map-get? portfolio {patron tx-sender})))
+
+(define-public (set-portfolio! 
+                (value {pie Pie}))
+  (ok (map-set portfolio {patron tx-sender} value)))
+
+(define-read-only (get-pie)
+  (get pie (get-portfolio)))
+
+(test= 
+ (set-portfolio! {pie (list 
+                        (make-slice 0x112233 3) 
+                        (make-slice 0xAABBCC 7))}))
+
+(test= 
+ (get-portfolio)
+ {pie (list
+        (make-slice 0x112233 3) 
+        (make-slice 0xAABBCC 7))})
+
+(define-read-only (slice-size 
+                   (slice Slice))
+  (get size slice))
+
+(define-read-only (pie-total (pie Pie)) 
+  (fold + (map slice-size pie) 0))
+  
+(define-read-only (get-total)
+  "Get the total fragments of the portfolio"
+  (pie-total (get pie (get-portfolio))))
+
+(define-read-only (divide 
+                    (slice Slice) 
+                    (state {total Total 
+                            amount Amount
+                            shares (list 99 {address Address
+                                             payment Amount})}))
+  "Add a new share based on the slice, updating remaining funds"
+  (let (({size, address} slice)
+        ({total, amount, shares} state)
+        (payment (/ (* size amount) total)))
+    {total (- total size)
+     amount (- amount payment)
+     shares (expect
+              (as-max-len? 
+                (append shares 
+                  {address, payment})
+                u99))}))    
+  
+(define-read-only (distribution 
+                   (pie Pie) 
+                   (amount Amount))
+  "Split the amount among the portfolio"
+  (let ((total (pie-total pie))
+        ({shares} (fold divide pie 
+                    {total, amount, shares (list)})))
+    shares))
+
+(test=   
+  (distribution (get-pie) 100))
+
+(test=
+  ;; Verify total paid is equal to the available funds
+  (let ((funds 1776))
+    (is-eq funds 
+           (fold + 
+             (map get-payment (distribution (get-pie) funds))
+             0))))
+
+(define-private (transfer! (share Share))
+ (let (({address, payment} share))
+   ;; For now pay in stx rather than btc
+   (stx-transfer? (to-uint payment) tx-sender address)))
+
+(define-public (distribute! (amount Amount))
+  "Distribute payment to the portfolio"
+  (if (>= amount (to-int (stx-get-balance tx-sender)))
+    (ok (map transfer! (distribution (get-pie) amount)))
+    (err {message "Insuffient funding"})))
+ 
+ 
+;; 
