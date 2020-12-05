@@ -20,7 +20,7 @@ A list of patronee addresses and their proportional share size to receive
 `(set-portfolio! (value {pie: (list 99 {address: principal, size: int})}))`
 Update the portfolio of patronees and their donation proportions
 
-`(distribute! (amount int))`
+`(donate! (amount int))`
 Divide and transfer the amount of funds to the pie of patronees.
 
 

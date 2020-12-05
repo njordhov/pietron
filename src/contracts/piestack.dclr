@@ -121,7 +121,7 @@
    ;; For now pay in stx rather than btc
    (stx-transfer? (to-uint payment) tx-sender address)))
 
-(define-public (distribute! (amount Amount))
+(define-public (donate! (amount Amount))
   "Distribute payment to the portfolio"
   (if (>= amount (to-int (stx-get-balance tx-sender)))
     (ok (map transfer! (distribution (get-pie) amount)))

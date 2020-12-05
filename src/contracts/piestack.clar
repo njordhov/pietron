@@ -109,7 +109,7 @@
            ;; For now pay in stx rather than btc
     (stx-transfer? (to-uint payment) tx-sender address))))
 
-(define-public (distribute! (amount int))
+(define-public (donate! (amount int))
  (begin
   (unwrap-panic (if (<= 1 amount) (ok 1) (err "Out of bounds: amount")))
   "Distribute payment to the portfolio"
